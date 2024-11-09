@@ -1,79 +1,48 @@
-# Azle Hello World
+## ICP TypeScript Master Class
+### Author: Daniel McCoy
 
--   [Installation](#installation)
--   [Deployment](#deployment)
+This is the class repository for the ICP TypeScript Master Course. This repo includes all of the source code worked on throughout the course as well as documentation for each part. The system is setup in a multi-canister architecture that is more ideal for efficiently running lots of different example projects, it is not designed for single project scalability, only for educational purposes.
 
-Azle helps you to build secure decentralized/replicated servers in TypeScript or JavaScript on [ICP](https://internetcomputer.org/). The current replication factor is [13-40 times](https://dashboard.internetcomputer.org/subnets).
+### Setup Instructions:
 
-Please remember that Azle is in beta and thus it may have unknown security vulnerabilities due to the following:
+You will need NodeJS v20.18.0 and DFX v0.20.1 to operate this repository.
 
--   Azle is built with various software packages that have not yet reached maturity
--   Azle does not yet have multiple independent security reviews/audits
--   Azle does not yet have many live, successful, continuously operating applications deployed to ICP
+#### Step 1: Clone Repo:
 
-## Installation
-
-> Windows is only supported through a Linux virtual environment of some kind, such as [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)
-
-You will need [Node.js 20](#nodejs-20) and [dfx](#dfx) to develop ICP applications with Azle:
-
-### Node.js 20
-
-It's recommended to use nvm to install Node.js 20:
-
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+```
+git clone https://github.com/id-daniel-mccoy/azle-class.git
 ```
 
-Restart your terminal and then run:
+#### Step 2: Easy Setup:
 
-```bash
-nvm install 20
+The base command is only designed for a fresh clone and will try to setup all example canisters in one flow.
+
+As long as you have dfx and node setup properly, you should be able to go into your newly created azle-class repository and enter this command to get setup:
+
+```
+npm run setup
 ```
 
-Check that the installation went smoothly by looking for clean output from the following command:
+#### Setup A Specific Canister:
 
-```bash
-node --version
+You can just add the name of the canister at the end of the setup command using a hypen and it should run the setup only for that specific canister like this:
+
+```
+npm run setup-hello
 ```
 
-### dfx
+This will setup the `hello` canister. This will work for any new canister added as long as you add an entry for it in the `package.json` file.
 
-Install the dfx command line tools for managing ICP applications:
+#### Last Resort:
 
-```bash
-DFX_VERSION=0.22.0 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+If nothing works or the easy setup is just not getting it done, you can try these steps for any individual canister you need to setup:
+
 ```
-
-Check that the installation went smoothly by looking for clean output from the following command:
-
-```bash
-dfx --version
-```
-
-## Deployment
-
-To create and deploy a simple sample application called `hello_world`:
-
-```bash
-# create a new default project called hello_world
-npx azle new hello_world
-cd hello_world
-```
-
-```bash
-# install all npm dependencies including azle
+cd <canisterName>
 npm install
-```
-
-```bash
-# start up a local ICP replica
-dfx start --clean
-```
-
-In a separate terminal in the `hello_world` directory:
-
-```bash
-# deploy your canister
+dfx start --clean --background
 dfx deploy
+dfx stop
 ```
+
+This repository will grow with size as the TypeScript course progresses. Please make sure to run `git pull` at the beginning of every session or to keep a copy of what we have in a separate folder/directory that you can keep updated.
