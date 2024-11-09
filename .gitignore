@@ -1,0 +1,5 @@
+.dfx
+node_modules
+hello/.dfx
+hello/.azle
+hello/node_modules
