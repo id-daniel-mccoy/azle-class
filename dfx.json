@@ -1,14 +1,14 @@
 {
     "canisters": {
-        "hello_world": {
+        "hello": {
             "type": "azle",
             "main": "hello/src/index.ts",
             "declarations": {
-                "output": "hello/test/dfx_generated/hello_world",
+                "output": "hello/test/dfx_generated/hello",
                 "node_compatibility": true
             },
             "custom": {
-                "build": "cd hello && npx azle hello_world"
+                "build": "cd hello && npm run build"
             }
         }
     }
