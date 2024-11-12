@@ -1,7 +1,6 @@
 {
     "scripts": {
-        "setup": "npm install && cd hello && npm run setup",
-        "build-hello": "cd hello && npm run build"
+        "setup": "npm install && cd hello && npm run setup && cd ../frontend && npm run setup"
     },
     "dependencies": {
         "azle": "^0.24.1"
