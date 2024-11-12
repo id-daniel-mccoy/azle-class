@@ -1,0 +1,5 @@
+service: () -> {
+    getAllUsers: () -> (vec record {id:text; username:text; description:text}) query;
+    isUsersEmpty: () -> (bool) query;
+    usersLength: () -> (nat64) query;
+}
