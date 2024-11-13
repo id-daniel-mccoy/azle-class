@@ -1,6 +1,8 @@
 {
     "scripts": {
-        "setup": "npm install && cd hello && npm run setup && cd ../frontend && npm run setup"
+        "setup": "npm install && cd hello && npm run setup && cd ../frontend && npm run setup",
+        "dev-frontend": " cd frontend && npm run dev",
+        "build-frontend": "cd frontend && npm run build"
     },
     "dependencies": {
         "azle": "^0.24.1"
