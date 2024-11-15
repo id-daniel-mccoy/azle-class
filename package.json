@@ -5,7 +5,8 @@
         "build-frontend": "cd frontend && npm run build"
     },
     "dependencies": {
-        "azle": "^0.24.1"
+        "azle": "^0.24.1",
+        "ic-auth": "^0.9.1"
     },
     "devDependencies": {
         "jest": "^29.7.0",

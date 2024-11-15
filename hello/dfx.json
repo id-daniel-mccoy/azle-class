@@ -6,6 +6,9 @@
             "declarations": {
                 "output": "test/dfx_generated/hello",
                 "node_compatibility": true
+            },
+            "custom": {
+                "experimental": true
             }
         }
     }

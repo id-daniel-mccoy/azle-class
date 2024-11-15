@@ -27,6 +27,8 @@ button {
     border: 2px solid white;
     border-radius: 12px;
     cursor: pointer;
+    margin: 10px;
+    margin-bottom: 20px;
 }
   
 button:hover {
