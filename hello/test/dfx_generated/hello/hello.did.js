@@ -6,7 +6,17 @@ export const idlFactory = ({ IDL }) => {
         ['query'],
       ),
     'createNewUser' : IDL.Func(
+        [IDL.Text, IDL.Text, IDL.Text],
+        [IDL.Variant({ 'Ok' : IDL.Text, 'Err' : IDL.Text })],
+        [],
+      ),
+    'deleteUser' : IDL.Func(
         [IDL.Text],
+        [IDL.Variant({ 'Ok' : IDL.Text, 'Err' : IDL.Text })],
+        [],
+      ),
+    'editUserMessage' : IDL.Func(
+        [IDL.Text, IDL.Text],
         [IDL.Variant({ 'Ok' : IDL.Text, 'Err' : IDL.Text })],
         [],
       ),

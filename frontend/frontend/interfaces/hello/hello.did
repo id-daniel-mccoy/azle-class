@@ -1,6 +1,8 @@
 service: () -> {
     countUsers: () -> (variant {Ok:nat64; Err:text}) query;
-    createNewUser: (text) -> (variant {Ok:text; Err:text});
+    createNewUser: (text, text, text) -> (variant {Ok:text; Err:text});
+    deleteUser: (text) -> (variant {Ok:text; Err:text});
+    editUserMessage: (text, text) -> (variant {Ok:text; Err:text});
     getAllUsers: () -> (variant {Ok:vec record {id:text; nickname:text; message:text}; Err:text}) query;
     isUsersEmpty: () -> (variant {Ok:bool; Err:text}) query;
 }

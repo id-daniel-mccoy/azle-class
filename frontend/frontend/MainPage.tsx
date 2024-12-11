@@ -29,6 +29,17 @@ export function MainPage() {
   //   console.log("Message set!");
   // }
 
+  const unauthorizedDeleteUser = async() => {
+    console.log("Deleting user...");
+    const id = document.getElementById("unauthDeleteID") as HTMLInputElement;
+    const response = await basicActor.deleteUser(id.value) as { Ok: string, Err: string };
+    if (response.Ok) {
+      console.log(response.Ok);
+    } else {
+      console.log(response.Err);
+    }
+  }
+
   // Plug Wallet and Permissioned Calling
 
   const plugLogin = async() => {
@@ -98,7 +109,7 @@ export function MainPage() {
     const actor = await getHelloActor();
     const users = await actor.getAllUsers() as returnUsers;
     if (users.Ok) {
-      console.log(users.Ok[0]);
+      console.log(users.Ok);
     } else {
       console.log(users.Err);
     }
@@ -107,8 +118,35 @@ export function MainPage() {
   const createNewUser = async() => {
     console.log("Creating user...");
     const nickname = document.getElementById("newuser") as HTMLInputElement;
+    const id = document.getElementById("newid") as HTMLInputElement;
+    const message = document.getElementById("newmessage") as HTMLInputElement;
     const actor = await getHelloActor();
-    const response = await actor.createNewUser(nickname.value) as returnString;
+    const response = await actor.createNewUser(nickname.value, id.value, message.value) as returnString;
+    if (response.Ok) {
+      console.log(response.Ok);
+    } else {
+      console.log(response.Err);
+    }
+  }
+
+  const editUserMessage = async() => {
+    console.log("Editing user message...");
+    const id = document.getElementById("userID") as HTMLInputElement;
+    const message = document.getElementById("userMessage") as HTMLInputElement;
+    const actor = await getHelloActor();
+    const response = await actor.editUserMessage(id.value, message.value) as returnString;
+    if (response.Ok) {
+      console.log(response.Ok);
+    } else {
+      console.log(response.Err);
+    }
+  }
+
+  const deleteUser = async() => {
+    console.log("Deleting user...");
+    const id = document.getElementById("deleteID") as HTMLInputElement;
+    const actor = await getHelloActor();
+    const response = await actor.deleteUser(id.value) as returnString;
     if (response.Ok) {
       console.log(response.Ok);
     } else {
@@ -123,9 +161,8 @@ export function MainPage() {
       </div>
       <div className="content">
         <h3>Unauthorized Calling</h3>
-        {/* <button onClick={getMessage}>Get Message</button>
-        <input type="text" id="message" placeholder="Enter message here"></input>
-        <button onClick={setMessage}>Set Message</button> */}
+        <input type='text' id='unauthDeleteID' placeholder='Enter ID'></input>
+        <button onClick={unauthorizedDeleteUser}>Delete User</button>
       </div>
       <div className="content">
         <h3>IC Auth Example</h3>
@@ -136,7 +173,14 @@ export function MainPage() {
         <button onClick={isUsersEmpty}>Is Users Empty</button>
         <button onClick={getAllUsers}>Get All Users</button>
         <input type='text' id='newuser' placeholder='Enter Nickname'></input>
+        <input type='text' id='newid' placeholder='Enter ID'></input>
+        <input type='text' id='newmessage' placeholder='Enter Message'></input>
         <button onClick={createNewUser}>Create New User</button>
+        <input type='text' id='userID' placeholder='Enter ID'></input>
+        <input type='text' id='userMessage' placeholder='Enter Message'></input>
+        <button onClick={editUserMessage}>Edit User Message</button>
+        <input type='text' id='deleteID' placeholder='Enter ID'></input>
+        <button onClick={deleteUser}>Delete User</button>
       </div>
     </div>
   )

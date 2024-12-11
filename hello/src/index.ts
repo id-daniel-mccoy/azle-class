@@ -56,15 +56,46 @@ export default Canister({
             return Err(error);
         }
     }),
-    createNewUser: update([text], Variant({ Ok: text, Err: text }), (nickname) => {
+    createNewUser: update([text, text, text], Variant({ Ok: text, Err: text }), (nickname, id, message) => {
         try {
-            const id = ic.caller().toText();
-            const message = "";
             const newUser = { id, nickname, message };
             users.insert(id, newUser);
             return Ok("User created successfully");
         } catch (error) {
             return Err("Error creating new user: " + error);
+        }
+    }),
+    editUserMessage: update([text, text], Variant({ Ok: text, Err: text }), (id, message) => {
+        if (ic.caller().toText() !== owner || ic.caller().toText() !== id) {
+            return Err("Only the owner or the user can edit the message");
+        } else {
+            try {
+                const user = users.get(id);
+                if (user === null) {
+                    return Err("User not found");
+                }
+                user.message = message;
+                users.insert(id, user);
+                return Ok("User message updated successfully");
+            } catch (error) {
+                return Err("Error updating user message: " + error);
+            }
+        }
+    }),
+    deleteUser: update([text], Variant({ Ok: text, Err: text }), (id) => {
+        if (ic.caller().toText() !== owner) {
+            return Err("Only the owner can delete users");
+        } else {
+            try {
+                const user = users.get(id);
+                if (user === null) {
+                    return Err("User not found");
+                }
+                users.remove(id);
+                return Ok("User deleted successfully");
+            } catch (error) {
+                return Err("Error deleting user: " + error);
+            }
         }
     }),
 });

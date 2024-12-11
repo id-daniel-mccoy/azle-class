@@ -5,7 +5,13 @@ import type { IDL } from '@dfinity/candid';
 export interface _SERVICE {
   'countUsers' : ActorMethod<[], { 'Ok' : bigint } | { 'Err' : string }>,
   'createNewUser' : ActorMethod<
-    [string],
+    [string, string, string],
+    { 'Ok' : string } |
+      { 'Err' : string }
+  >,
+  'deleteUser' : ActorMethod<[string], { 'Ok' : string } | { 'Err' : string }>,
+  'editUserMessage' : ActorMethod<
+    [string, string],
     { 'Ok' : string } |
       { 'Err' : string }
   >,
