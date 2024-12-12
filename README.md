@@ -36,9 +36,11 @@ dfx deploy
 dfx stop
 ```
 <br />
+
 ### Review Of Course Session:
 
 In this session we learned how to create our first canister smart contract live on the network and deploy our backend to it, then we created a basic frontend that we will use in session 4 to interact with it.
+
 <br />
 
 **Step 1 - Create Your Canister**
@@ -50,6 +52,7 @@ dfx ledger --network ic create-canister <YourWalletPrincipalAddress> --amount 0.
 ```
 
 This command will generate you a blank canister and burn 0.2 ICP into Cycles to gas up your canister. Upon completion it will give you your canister address, **Make sure you save it!** It should look a little bit like a short hash of numbers and letters. This will be your canister identifier moving forward.
+
 <br />
 
 **Step 2 - Create A Canister ID File For Your Backend**
@@ -67,6 +70,7 @@ Edit the new file to look like this, but replace the canister ID with yours.
 ```
 
 Save that file. DFX should now be able to deploy your backend to this address.
+
 <br />
 
 **Step 3 - Deploying To Mainnet**
@@ -80,6 +84,7 @@ dfx deploy --network ic
 ```
 
 This should build and deploy your backend to the mainnnet. Now you can test it!
+
 <br />
 
 **Step 4 - Testing Your Canister**
@@ -93,6 +98,7 @@ dfx canister --network ic call hello getMessage
 ```
 
 From running these commands you should be able to see the basic get and set functionality of your new backend.
+
 <br />
 
 **Step 5 - Adding A Basic Frontend**
