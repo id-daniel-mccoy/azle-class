@@ -3,3 +3,7 @@ node_modules
 hello/.dfx
 hello/.azle
 hello/node_modules
+hello/canister_ids.json
+frontend/.dfx
+frontend/dist
+frontend/node_modules
