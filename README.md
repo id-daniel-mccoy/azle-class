@@ -11,7 +11,7 @@ You will need NodeJS v20.18.0 and DFX v0.20.1 to operate this repository.
 #### Step 1: Clone Repo:
 
 ```
-git clone -b session 3 https://github.com/id-daniel-mccoy/azle-class.git session3
+git clone -b session3 https://github.com/id-daniel-mccoy/azle-class.git session3
 ```
 
 #### Step 2: Easy Setup:
